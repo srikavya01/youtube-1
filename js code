@@ -1,0 +1,22 @@
+let posts = [
+    {time: "10:00 AM", likes: 1200, comments: 150, views: 10000},
+    {time: "06:00 PM", likes: 2500, comments: 320, views: 20000},
+    {time: "09:00 PM", likes: 4000, comments: 500, views: 35000}
+];
+
+let bestTime = "";
+let bestEngagement = 0;
+
+posts.forEach(post => {
+
+    let engagement = (post.likes + post.comments) / post.views * 100;
+
+    if (engagement > bestEngagement) {
+        bestEngagement = engagement;
+        bestTime = post.time;
+    }
+});
+
+document.getElementById("result").innerHTML =
+    "Best Posting Time: " + bestTime + "<br>" +
+    "Best Engagement Rate: " + bestEngagement.toFixed(2) + "%";
